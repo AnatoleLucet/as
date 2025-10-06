@@ -4,7 +4,7 @@ type V struct {
 	value any
 }
 
-func Value(v any) V {
+func Value[T any](v T) V {
 	return V{v}
 }
 
@@ -64,17 +64,4 @@ func (g V) Float32() (float32, error) {
 }
 func (g V) Float64() (float64, error) {
 	return Float64(g.value)
-}
-
-func t() {
-
-	values := []V{
-		Value("hello"),
-		Value(123),
-		Value(1.234),
-	}
-
-	str, _ := values[0].String()
-	num, _ := values[1].Int()
-	flt, _ := values[2].Float()
 }
