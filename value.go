@@ -56,9 +56,25 @@ func (g V) Uint64() (uint64, error) {
 	return Uint64(g.value)
 }
 
+func (g V) Float() (float64, error) {
+	return Float64(g.value)
+}
 func (g V) Float32() (float32, error) {
 	return Float32(g.value)
 }
 func (g V) Float64() (float64, error) {
 	return Float64(g.value)
+}
+
+func t() {
+
+	values := []V{
+		Value("hello"),
+		Value(123),
+		Value(1.234),
+	}
+
+	str, _ := values[0].String()
+	num, _ := values[1].Int()
+	flt, _ := values[2].Float()
 }
