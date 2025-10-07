@@ -5,12 +5,11 @@ import (
 	"unicode/utf8"
 )
 
-func Rune(v any) (rune, error) {
-	if v == nil {
-		return 0, nil
-	}
+func Rune[T any](v T) (rune, error) {
 
-	switch val := v.(type) {
+	switch val := any(v).(type) {
+	case nil:
+		return 0, nil
 	case rune:
 		return val, nil
 	case string:

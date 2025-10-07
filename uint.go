@@ -8,12 +8,10 @@ import (
 	"unicode/utf8"
 )
 
-func Uint64(v any) (uint64, error) {
-	if v == nil {
+func Uint64[T any](v T) (uint64, error) {
+	switch val := any(v).(type) {
+	case nil:
 		return 0, nil
-	}
-
-	switch val := v.(type) {
 	case uint:
 		return uint64(val), nil
 	case uint8:
@@ -54,7 +52,7 @@ func Uint64(v any) (uint64, error) {
 	return uint64(i64), nil
 }
 
-func Uint32(v any) (uint32, error) {
+func Uint32[T any](v T) (uint32, error) {
 	u64, err := Uint64(v)
 	if err != nil {
 		return 0, err
@@ -67,7 +65,7 @@ func Uint32(v any) (uint32, error) {
 	return uint32(u64), nil
 }
 
-func Uint16(v any) (uint16, error) {
+func Uint16[T any](v T) (uint16, error) {
 	u64, err := Uint64(v)
 	if err != nil {
 		return 0, err
@@ -80,7 +78,7 @@ func Uint16(v any) (uint16, error) {
 	return uint16(u64), nil
 }
 
-func Uint8(v any) (uint8, error) {
+func Uint8[T any](v T) (uint8, error) {
 	u64, err := Uint64(v)
 	if err != nil {
 		return 0, err
@@ -93,7 +91,7 @@ func Uint8(v any) (uint8, error) {
 	return uint8(u64), nil
 }
 
-func Uint(v any) (uint, error) {
+func Uint[T any](v T) (uint, error) {
 	u64, err := Uint64(v)
 	if err != nil {
 		return 0, err

@@ -5,12 +5,10 @@ import (
 	"strconv"
 )
 
-func String(v any) (string, error) {
-	if v == nil {
-		return "", nil
-	}
-
+func String[T any](v T) (string, error) {
 	switch val := any(v).(type) {
+	case nil:
+		return "", nil
 	case string:
 		return val, nil
 	case rune:

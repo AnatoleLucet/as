@@ -8,12 +8,10 @@ import (
 	"unicode/utf8"
 )
 
-func Float64(v any) (float64, error) {
-	if v == nil {
+func Float64[T any](v T) (float64, error) {
+	switch val := any(v).(type) {
+	case nil:
 		return 0, nil
-	}
-
-	switch val := v.(type) {
 	case int:
 		return float64(val), nil
 	case int8:
@@ -59,7 +57,7 @@ func Float64(v any) (float64, error) {
 	}
 }
 
-func Float32(v any) (float32, error) {
+func Float32[T any](v T) (float32, error) {
 	f64, err := Float64(v)
 	if err != nil {
 		return 0, err

@@ -15,12 +15,10 @@ func stringToBool(s string) (bool, error) {
 	return false, errors.New("cannot convert string to bool")
 }
 
-func Bool(v any) (bool, error) {
-	if v == nil {
+func Bool[T any](v T) (bool, error) {
+	switch val := any(v).(type) {
+	case nil:
 		return false, nil
-	}
-
-	switch val := v.(type) {
 	case bool:
 		return val, nil
 	case rune:

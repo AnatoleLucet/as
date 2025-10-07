@@ -8,12 +8,10 @@ import (
 	"unicode/utf8"
 )
 
-func Int64(v any) (int64, error) {
-	if v == nil {
+func Int64[T any](v T) (int64, error) {
+	switch val := any(v).(type) {
+	case nil:
 		return 0, nil
-	}
-
-	switch val := v.(type) {
 	case int:
 		return int64(val), nil
 	case int8:
@@ -58,7 +56,7 @@ func Int64(v any) (int64, error) {
 	}
 }
 
-func Int32(v any) (int32, error) {
+func Int32[T any](v T) (int32, error) {
 	i64, err := Int64(v)
 	if err != nil {
 		return 0, err
@@ -71,7 +69,7 @@ func Int32(v any) (int32, error) {
 	return int32(i64), nil
 }
 
-func Int16(v any) (int16, error) {
+func Int16[T any](v T) (int16, error) {
 	i64, err := Int64(v)
 	if err != nil {
 		return 0, err
@@ -84,7 +82,7 @@ func Int16(v any) (int16, error) {
 	return int16(i64), nil
 }
 
-func Int8(v any) (int8, error) {
+func Int8[T any](v T) (int8, error) {
 	i64, err := Int64(v)
 	if err != nil {
 		return 0, err
@@ -97,7 +95,7 @@ func Int8(v any) (int8, error) {
 	return int8(i64), nil
 }
 
-func Int(v any) (int, error) {
+func Int[T any](v T) (int, error) {
 	i64, err := Int64(v)
 	if err != nil {
 		return 0, err
