@@ -3,6 +3,7 @@ package as
 import (
 	"encoding/binary"
 	"errors"
+	"fmt"
 	"math"
 	"strconv"
 	"unicode/utf8"
@@ -53,7 +54,7 @@ func Float64[T any](v T) (float64, error) {
 		}
 		return 0, errors.New("byte slice too short")
 	default:
-		return 0, errors.New("cannot convert to float64")
+		return 0, fmt.Errorf("cannot convert %T to float64", v)
 	}
 }
 

@@ -3,6 +3,7 @@ package as
 import (
 	"encoding/binary"
 	"errors"
+	"fmt"
 	"math"
 	"strconv"
 	"unicode/utf8"
@@ -52,7 +53,7 @@ func Int64[T any](v T) (int64, error) {
 		}
 		return 0, errors.New("byte slice too short")
 	default:
-		return 0, errors.New("cannot convert to int64")
+		return 0, fmt.Errorf("cannot convert %T to int64", v)
 	}
 }
 

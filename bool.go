@@ -1,7 +1,7 @@
 package as
 
 import (
-	"errors"
+	"fmt"
 	"strconv"
 )
 
@@ -12,7 +12,8 @@ func stringToBool(s string) (bool, error) {
 	if s == "false" || s == "no" || s == "off" || s == "0" {
 		return false, nil
 	}
-	return false, errors.New("cannot convert string to bool")
+
+	return false, fmt.Errorf("cannot convert string %q to bool", s)
 }
 
 func Bool[T any](v T) (bool, error) {
@@ -30,6 +31,6 @@ func Bool[T any](v T) (bool, error) {
 		}
 		return stringToBool(s)
 	default:
-		return false, errors.New("cannot convert to bool")
+		return false, fmt.Errorf("cannot convert %T to bool", v)
 	}
 }
