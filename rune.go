@@ -6,7 +6,6 @@ import (
 )
 
 func Rune[T any](v T) (rune, error) {
-
 	switch val := any(v).(type) {
 	case nil:
 		return 0, nil
