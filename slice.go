@@ -1,6 +1,6 @@
 package as
 
-func toSlice[T, U any](converter func(v any) (T, error), v []U) ([]T, error) {
+func convertSlice[T, U any](converter func(v any) (T, error), v []U) ([]T, error) {
 	result := make([]T, len(v))
 
 	for i, item := range v {
@@ -25,37 +25,37 @@ func Slice[T any](converter func(v any) (T, error)) func(v any) ([]T, error) {
 		case []T:
 			return val, nil
 		case []any:
-			return toSlice(converter, val)
+			return convertSlice(converter, val)
 		case []string:
-			return toSlice(converter, val)
+			return convertSlice(converter, val)
 		case []int:
-			return toSlice(converter, val)
+			return convertSlice(converter, val)
 		case []int8:
-			return toSlice(converter, val)
+			return convertSlice(converter, val)
 		case []int16:
-			return toSlice(converter, val)
+			return convertSlice(converter, val)
 		case []int64:
-			return toSlice(converter, val)
+			return convertSlice(converter, val)
 		case []uint:
-			return toSlice(converter, val)
+			return convertSlice(converter, val)
 		case []uint8:
-			return toSlice(converter, val)
+			return convertSlice(converter, val)
 		case []uint16:
-			return toSlice(converter, val)
+			return convertSlice(converter, val)
 		case []uint32:
-			return toSlice(converter, val)
+			return convertSlice(converter, val)
 		case []uint64:
-			return toSlice(converter, val)
+			return convertSlice(converter, val)
 		case []float32:
-			return toSlice(converter, val)
+			return convertSlice(converter, val)
 		case []float64:
-			return toSlice(converter, val)
+			return convertSlice(converter, val)
 		case []bool:
-			return toSlice(converter, val)
+			return convertSlice(converter, val)
 		case []rune:
-			return toSlice(converter, val)
+			return convertSlice(converter, val)
 		case [][]byte:
-			return toSlice(converter, val)
+			return convertSlice(converter, val)
 		default:
 			converted, err := converter(val)
 			if err != nil {

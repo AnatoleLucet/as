@@ -26,25 +26,25 @@ import (
 )
 
 func main() {
-    as.String(123)              // "123"
-    as.String(1.234)            // "1.234"
-    as.String(true)             // "true"
-    as.String([]byte("hello"))  // "hello"
-    as.String([]int{1,2,3})     // "[1 2 3]"
+    as.String(123)             // "123"
+    as.String(1.234)           // "1.234"
+    as.String(true)            // "true"
+    as.String([]byte("hello")) // "hello"
+    as.String([]int{1,2,3})    // "[1 2 3]"
 
-    as.Int("123")               // 123
-    as.Int(1.234)               // 1
-    as.Int(true)                // true
-    as.Int([]byte("123"))       // 123
+    as.Int("123")              // 123
+    as.Int(1.234)              // 1
+    as.Int(true)               // true
+    as.Int([]byte("123"))      // 123
 
-    as.Bool("true")             // true
-    as.Bool("yes")              // true
-    as.Bool(1)                  // true
-    as.Bool("false")            // false
-    as.Bool("no")               // false
-    as.Bool(0)                  // false
+    as.Bool("true")            // true
+    as.Bool("yes")             // true
+    as.Bool(1)                 // true
+    as.Bool("false")           // false
+    as.Bool("no")              // false
+    as.Bool(0)                 // false
 
-    as.Slice(as.Int)([]string{"1", "2", "3"})
+    as.Slice(as.Int)([]string{"1", "2", "3"}) // []int{1, 2, 3}
 
     // and many more
 }
