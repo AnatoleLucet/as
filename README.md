@@ -48,10 +48,10 @@ func main() {
     as.Map(as.Self, as.Int, map[string]int{"one": "1"}) // map[string]int{"one": 1}
 
     // you can also use reflection based converters, but note that these are a bit slower:
-    as.Type[int]("1")         // 1
-    as.Kind(reflect.Int, "1") // 1
-    as.KindSlice(reflect.Int, []string{"1", "2"}) // []int{1, 2}
-    as.KindMap(as.Self, reflect.Int, map[string]int{"one": "1"}) // map[string]int{"one": 1}
+    as.T[int]("1")         // 1
+    as.Type(reflect.TypeOf(int(0)), "1") // 1
+    as.TypeSlice(reflect.TypeOf(int(0)), []string{"1", "2"}) // []int{1, 2}
+    as.TypeMap(reflect.TypeOf(string("")), reflect.TypeOf(int(0)), map[string]int{"one": "1"}) // map[string]int{"one": 1}
 
     // and many more
 }
