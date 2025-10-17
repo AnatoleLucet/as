@@ -44,8 +44,14 @@ func main() {
     as.Bool("no")              // false
     as.Bool(0)                 // false
 
-    as.Slice(as.Int, []string{"1", "2", "3"}) // []int{1, 2, 3}
-    as.Map(as.Self, as.Int, map[string]int{"one": "1", "two": "2"}) // map[string]int{"one": 1, "two": 2}
+    as.Slice(as.Int, []string{"1", "2"}) // []int{1, 2}
+    as.Map(as.Self, as.Int, map[string]int{"one": "1"}) // map[string]int{"one": 1}
+
+    // you can also use reflection based converters, but note that these are a bit slower:
+    as.Type[int]("1")         // 1
+    as.Kind(reflect.Int, "1") // 1
+    as.KindSlice(reflect.Int, []string{"1", "2"}) // []int{1, 2}
+    as.KindMap(as.Self, reflect.Int, map[string]int{"one": "1"}) // map[string]int{"one": 1}
 
     // and many more
 }
