@@ -2,7 +2,7 @@
 
 <p align="center">Convert any value to a known type.</p>
 
-```golang
+```go
 query := r.URL.Query()
 
 as.Int(query.Get("page"))
@@ -18,7 +18,7 @@ go get github.com/AnatoleLucet/as
 
 ## Usage
 
-```golang
+```go
 package main
 
 import (
@@ -45,6 +45,7 @@ func main() {
     as.Bool(0)                 // false
 
     as.Slice(as.Int, []string{"1", "2", "3"}) // []int{1, 2, 3}
+    as.Map(as.Self, as.Int, map[string]int{"one": "1", "two": "2"}) // map[string]int{"one": 1, "two": 2}
 
     // and many more
 }
@@ -54,7 +55,7 @@ func main() {
 
 as.Value() is a special generic type, purpose built for cases where you want to abstract an arbitrary value in a known type.
 
-```golang
+```go
 // With as.Value you can store multiple types in a single slice.
 values := []as.V{
     as.Value("hello"),
