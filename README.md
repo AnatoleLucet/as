@@ -44,7 +44,7 @@ func main() {
     as.Bool("no")              // false
     as.Bool(0)                 // false
 
-    as.Slice(as.Int)([]string{"1", "2", "3"}) // []int{1, 2, 3}
+    as.Slice(as.Int, []string{"1", "2", "3"}) // []int{1, 2, 3}
 
     // and many more
 }

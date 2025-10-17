@@ -6,7 +6,7 @@ func TestSlice(t *testing.T) {
 	t.Run("convert []string to []int", func(t *testing.T) {
 		input := []string{"1", "2", "3", "4", "5"}
 		expected := []int{1, 2, 3, 4, 5}
-		result, err := Slice(Int)(input)
+		result, err := Slice(Int, input)
 		if err != nil {
 			t.Fatalf("Unexpected error: %v", err)
 		}
@@ -25,7 +25,7 @@ func TestSlice(t *testing.T) {
 	t.Run("convert []any with incompatible types", func(t *testing.T) {
 		input := []any{"one", "two", "three"}
 		expected := []int{}
-		result, err := Slice(Int)(input)
+		result, err := Slice(Int, input)
 
 		if err == nil {
 			t.Fatalf("Expected error but got none")
@@ -39,7 +39,7 @@ func TestSlice(t *testing.T) {
 	t.Run("input is nil", func(t *testing.T) {
 		var input []any = nil
 		var expected []int = nil
-		result, err := Slice(Int)(input)
+		result, err := Slice(Int, input)
 		if err != nil {
 			t.Fatalf("Unexpected error: %v", err)
 		}
