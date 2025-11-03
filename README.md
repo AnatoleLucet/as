@@ -6,7 +6,7 @@
 query := r.URL.Query()
 
 as.Int(query.Get("page"))
-as.Float(query.Get("min"))
+as.Float(query.Get("price"))
 as.Bool(query.Get("in_stock"))
 ```
 
@@ -34,7 +34,7 @@ func main() {
 
     as.Int("123")              // 123
     as.Int(1.234)              // 1
-    as.Int(true)               // true
+    as.Int(true)               // 1
     as.Int([]byte("123"))      // 123
 
     as.Bool("true")            // true
@@ -45,13 +45,13 @@ func main() {
     as.Bool(0)                 // false
 
     as.Slice(as.Int, []string{"1", "2"}) // []int{1, 2}
-    as.Map(as.Self, as.Int, map[string]int{"one": "1"}) // map[string]int{"one": 1}
+    as.Map(as.Self, as.Int, map[string]string{"one": "1"}) // map[string]int{"one": 1}
 
     // you can also use reflection based converters, but note that these are a bit slower:
     as.T[int]("1")         // 1
     as.Type(reflect.TypeOf(int(0)), "1") // 1
     as.TypeSlice(reflect.TypeOf(int(0)), []string{"1", "2"}) // []int{1, 2}
-    as.TypeMap(reflect.TypeOf(string("")), reflect.TypeOf(int(0)), map[string]int{"one": "1"}) // map[string]int{"one": 1}
+    as.TypeMap(reflect.TypeOf(string("")), reflect.TypeOf(int(0)), map[string]string{"one": "1"}) // map[string]int{"one": 1}
 
     // and many more
 }
